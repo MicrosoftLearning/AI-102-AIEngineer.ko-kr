@@ -1,44 +1,49 @@
 ---
 lab:
-    title: 'Computer Vision을 사용하여 이미지 분석'
-    module: '모듈 8 - Computer Vision 시작'
+  title: Computer Vision을 사용하여 이미지 분석
+  module: Module 8 - Getting Started with Computer Vision
+ms.openlocfilehash: 5b7f15550844e4bc5efbdb3b8ee00d71760f18c9
+ms.sourcegitcommit: d6da3bcb25d1cff0edacd759e75b7608a4694f03
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 11/16/2021
+ms.locfileid: "137819476"
 ---
-
-# Computer Vision을 사용하여 이미지 분석
+# <a name="analyze-images-with-computer-vision"></a>Computer Vision을 사용하여 이미지 분석
 
 Computer Vision은 소프트웨어 시스템이 이미지를 분석하여 시각적 입력을 해석하는 데 사용할 수 있는 인공 지능 기능입니다. Microsoft Azure에서 **Computer Vision** Cognitive Service는 흔히 수행하는 Computer Vision 작업용으로 미리 작성된 모델을 제공합니다. 이러한 작업으로는 이미지를 분석하여 캡션과 태그 추천, 일반적인 개체, 주요 건물, 유명인, 브랜드 감지, 성인 콘텐츠 유무 확인 등이 있습니다. Computer Vision 서비스를 사용하여 이미지 색 및 형식을 분석한 다음 "스마트 자르기" 썸네일 이미지를 생성할 수도 있습니다.
 
-## 이 과정용 리포지토리 복제
+## <a name="clone-the-repository-for-this-course"></a>이 과정용 리포지토리 복제
 
 이 랩에서 작업을 수행 중인 환경에 **AI-102-AIEngineer** 코드 리포지토리를 아직 복제하지 않았다면 다음 단계에 따라 리포지토리를 지금 복제합니다. 리포지토리를 복제한 경우에는 Visual Studio Code에서 복제한 폴더를 엽니다.
 
-1. Visual Studio Code를 시작합니다.
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102KO-Designing-and-Implementing-a-Microsoft-Azure-AI-Solution` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code 시작
+2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
-    > **참고**: 빌드 및 디버그에 필요한 자산을 추가하라는 메시지가 표시되면 **나중에**를 선택합니다.
+    > **참고**: 빌드 및 디버그에 필요한 자산을 추가하라는 메시지가 표시되면 **나중에** 를 선택합니다.
 
-## Cognitive Services 리소스 프로비전
+## <a name="provision-a-cognitive-services-resource"></a>Cognitive Services 리소스 프로비전
 
-구독에 **Cognitive Services** 리소스가 아직 없으면 리소스를 프로비전해야 합니다.
+구독에 아직 없는 경우 **Cognitive Services** 리소스를 프로비전해야 합니다.
 
-1. Azure Portal `https://portal.azure.com`을 열고 Azure 구독과 연결된 Microsoft 계정을 사용하여 로그인합니다.
-2. **&#65291;리소스 만들기** 단추를 선택하고 *cognitive services*를 검색한 후에 다음 설정을 사용하여 **Cognitive Services** 리소스를 만듭니다.
-    - **구독**: *사용자의 Azure 구독*
-    - **리소스 그룹**: *리소스 그룹 선택 또는 만들기(제한된 구독을 사용 중이라면 새 리소스 그룹을 만들 권한이 없을 수도 있으므로 제공된 리소스 그룹 사용)*
-    - **지역**: *사용 가능한 아무 지역이나 선택*
-    - **이름**: *고유한 이름 입력*
+1. `https://portal.azure.com`의 Azure Portal을 열고 Azure 구독과 연관된 Microsoft 계정을 사용하여 로그인합니다.
+2. **&#65291;리소스 만들기** 단추를 선택하고 *cognitive services* 를 검색한 후에 다음 설정을 사용하여 **Cognitive Services** 리소스를 만듭니다.
+    - **구독**: ‘Azure 구독’
+    - **리소스 그룹**: 리소스 그룹 선택 또는 만들기(제한된 구독을 사용 중이라면 새 리소스 그룹을 만들 권한이 없을 수도 있으므로 제공된 리소스 그룹 사용)
+    - **지역**: 사용 가능한 지역을 선택합니다.
+    - **이름**: *고유 이름 입력*
     - **가격 책정 계층**: 표준 S0
-3. 필요한 체크박스를 선택하여 리소스를 만듭니다.
-4. 배포가 완료될 때까지 기다렸다가 배포 세부 정보를 확인합니다.
+3. 필요한 확인란을 선택하고 리소스를 만듭니다.
+4. 배포가 완료될 때까지 기다린 다음, 배포 세부 정보를 봅니다.
 5. 리소스가 배포되면 해당 리소스로 이동하여 **키 및 엔드포인트** 페이지를 확인합니다. 다음 절차에서 이 페이지에 표시되는 키 중 하나와 엔드포인트가 필요합니다.
 
-## Computer Vision SDK 사용 준비
+## <a name="prepare-to-use-the-computer-vision-sdk"></a>Computer Vision SDK 사용 준비
 
 이 연습에서는 Computer Vision SDK를 사용해 이미지를 분석하는 부분 구현 클라이언트 애플리케이션을 완성합니다.
 
-> **참고**: **C#** 또는 **Python**용 SDK 사용을 선택할 수 있습니다. 아래 단계에서 선호하는 언어에 적합한 작업을 수행하세요.
+> **참고**: **C#** 또는 **Python** 용 SDK 사용을 선택할 수 있습니다. 아래 단계에서 선호하는 언어에 적합한 작업을 수행하세요.
 
 1. Visual Studio Code의 **탐색기** 창에서 **15-computer-vision** 폴더를 찾은 다음 언어 기본 설정에 따라 **C-Sharp** 또는 **Python** 폴더를 확장합니다.
 2. **image-analysis** 폴더를 마우스 오른쪽 단추로 클릭하고 통합 터미널을 엽니다. 그런 다음 언어 기본 설정에 적합한 명령을 실행하여 Computer Vision SDK 패키지를 설치합니다.
@@ -56,13 +61,13 @@ pip install azure-cognitiveservices-vision-computervision==0.7.0
 ```
     
 3. **image-analysis** 폴더의 내용을 표시하여 구성 설정용 파일이 포함되어 있음을 확인합니다.
-    - **C#**: appsettings.json
+    - **C#** : appsettings.json
     - **Python**: .env
 
-    구성 파일을 열고 Cognitive Service 리소스용 **엔드포인트** 및 인증 **키**를 반영하여 해당 파일에 포함된 구성 값을 업데이트합니다. 변경 내용을 저장합니다.
+    구성 파일을 열고 Cognitive Service 리소스용 **엔드포인트** 및 인증 **키** 를 반영하여 해당 파일에 포함된 구성 값을 업데이트합니다. 변경 내용을 저장합니다.
 4. **image-analysis** 폴더에는 클라이언트 애플리케이션용 코드 파일이 포함되어 있습니다.
 
-    - **C#**: Program.cs
+    - **C#** : Program.cs
     - **Python**: image-analysis.py
 
     코드 파일을 열고 파일 맨 윗부분의 기존 네임스페이스 참조 아래에 있는 **네임스페이스 가져오기** 주석을 찾습니다. 그런 다음 이 주석 아래에 다음 언어별 코드를 추가하여 Computer Vision SDK를 사용하는 데 필요한 네임스페이스를 가져옵니다.
@@ -84,14 +89,14 @@ from azure.cognitiveservices.vision.computervision.models import VisualFeatureTy
 from msrest.authentication import CognitiveServicesCredentials
 ```
     
-## 분석할 이미지 확인
+## <a name="view-the-images-you-will-analyze"></a>분석할 이미지 확인
 
 이 연습에서는 Computer Vision 서비스를 사용해 여러 이미지를 분석합니다.
 
 1. Visual Studio Code에서 **image-analysis** 폴더와 이 폴더에 포함된 **images** 폴더를 차례로 확장합니다.
 2. 각 이미지 파일을 차례로 선택하여 Visual Studio Code에 표시합니다.
 
-## 이미지를 분석하여 캡션 추천
+## <a name="analyze-an-image-to-suggest-a-caption"></a>이미지를 분석하여 캡션 추천
 
 이제 SDK를 사용해 Computer Vision 서비스를 호출하고 이미지를 분석할 준비가 되었습니다.
 
@@ -226,9 +231,9 @@ python image-analysis.py images/street.jpg
 7. 이번에는 **images/building.jpg** 인수를 사용하여 프로그램을 다시 실행해 **building.jpg** 이미지에 대해 생성되는 캡션을 확인합니다.
 8. 이전 단계를 반복하여 **images/person.jpg** 파일에 대한 캡션을 생성합니다.
 
-## 이미지의 추천 캡션 가져오기
+## <a name="get-suggested-tags-for-an-image"></a>이미지의 추천 캡션 가져오기
 
-이미지 내용에 대한 단서를 제공하는 관련 *태그*를 식별하면 유용한 경우가 있습니다.
+이미지 내용에 대한 단서를 제공하는 관련 *태그* 를 식별하면 유용한 경우가 있습니다.
 
 1. **AnalyzeImage** 함수의 **이미지 태그 가져오기** 주석 아래에 다음 코드를 추가합니다.
 
@@ -258,9 +263,9 @@ if (len(analysis.tags) > 0):
 
 2. 변경 내용을 저장한 다음 **images** 이미지 폴더의 각 이미지 파일별로 프로그램을 한 번씩 실행합니다. 프로그램을 실행할 때마다 이미지 캡션 외에 추천 태그 목록도 표시됨을 확인합니다.
 
-## 이미지 범주 가져오기
+## <a name="get-image-categories"></a>이미지 범주 가져오기
 
-Computer Vision 서비스는 이미지 *범주*를 추천할 수 있으며 각 범주 내에서 잘 알려진 주요 건물이나 유명인을 식별할 수 있습니다.
+Computer Vision 서비스는 이미지 *범주* 를 추천할 수 있으며 각 범주 내에서 잘 알려진 주요 건물이나 유명인을 식별할 수 있습니다.
 
 1. **AnalyzeImage** 함수의 **이미지 범주 가져오기(유명인 및 주요 건물 포함)** 주석 아래에 다음 코드를 추가합니다.
 
@@ -362,7 +367,7 @@ if (len(analysis.categories) > 0):
     
 2. 변경 내용을 저장한 다음 **images** 이미지 폴더의 각 이미지 파일별로 프로그램을 한 번씩 실행합니다. 프로그램을 실행할 때마다 이미지 캡션과 태그 외에 추천 범주 목록, 그리고 인식된 주요 건물이나 유명인도 표시됨을 확인합니다(특히 **building.jpg** 및 **person.jpg** 이미지의 경우).
 
-## 이미지에서 브랜드 가져오기
+## <a name="get-brands-in-an-image"></a>이미지에서 브랜드 가져오기
 
 브랜드 이름이 표시되어 있지 않아도 로고를 통해 시각적으로 인식 가능한 브랜드도 있습니다. Computer Vision 서비스는 잘 알려진 수천 가지 브랜드를 식별하도록 학습이 완료된 상태입니다.
 
@@ -394,9 +399,9 @@ if (len(analysis.brands) > 0):
     
 2. 변경 내용을 저장한 다음 **images** 이미지 폴더의 각 이미지 파일별로 프로그램을 한 번씩 실행합니다. 프로그램을 실행할 때마다 식별된 브랜드를 살펴봅니다(특히 **person.jpg** 이미지의 경우).
 
-## 이미지에서 개체 감지 및 찾기
+## <a name="detect-and-locate-objects-in-an-image"></a>이미지에서 개체 감지 및 찾기
 
-*개체 감지*는 이미지 내의 개별 개체를 식별하고 해당 위치를 경계 상자로 표시하는 특정 형식의 Computer Vision 기능입니다.
+*개체 감지* 는 이미지 내의 개별 개체를 식별하고 해당 위치를 경계 상자로 표시하는 특정 형식의 Computer Vision 기능입니다.
 
 1. **AnalyzeImage** 함수의 **이미지에서 개체 가져오기** 주석 아래에 다음 코드를 추가합니다.
 
@@ -465,7 +470,7 @@ if len(analysis.objects) > 0:
     
 2. 변경 내용을 저장한 다음 **images** 이미지 폴더의 각 이미지 파일별로 프로그램을 한 번씩 실행합니다. 프로그램을 실행할 때마다 감지된 개체를 살펴봅니다. 각 실행 후에는 코드 파일과 같은 폴더에 생성된 **objects.jpg** 파일을 표시하여 주석이 추가된 개체를 확인합니다.
 
-## 이미지의 조정 등급 가져오기
+## <a name="get-moderation-ratings-for-an-image"></a>이미지의 조정 등급 가져오기
 
 일부 대상 그룹에게는 적합하지 않은 이미지도 있으므로 조정을 적용하여 성인용 이미지나 폭력적인 이미지를 식별해야 할 수도 있습니다.
 
@@ -493,9 +498,9 @@ print(ratings)
 
 > **참고**: 이전 작업에서는 메서드 하나를 사용해 이미지를 분석한 다음 코드를 계속 추가하여 결과를 구문 분석하고 표시했습니다. SDK에서는 캡션 추천, 태그 식별, 개체 감지 등에 사용할 수 있는 개별 메서드도 제공하므로 가장 적절한 메서드를 사용하여 필요한 정보만 반환할 수 있습니다. 그러면 반환해야 하는 데이터 페이로드 크기가 줄어듭니다. 자세한 내용은 [.NET SDK 설명서](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) 또는 [Python SDK 설명서](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/computervision?view=azure-python)를 참조하세요.
 
-## 썸네일 이미지 생성
+## <a name="generate-a-thumbnail-image"></a>썸네일 이미지 생성
 
-기본적으로 표시하려는 주체가 새 이미지 치수 내에 포함되도록 이미지를 잘라서 작은 이미지 버전인 *썸네일*을 만들어야 하는 경우도 있습니다.
+기본적으로 표시하려는 주체가 새 이미지 치수 내에 포함되도록 이미지를 잘라서 작은 이미지 버전인 *썸네일* 을 만들어야 하는 경우도 있습니다.
 
 1. 코드 파일에서 **GetThumbnail** 함수를 찾은 다음 **썸네일 생성** 주석 아래에 다음 코드를 추가합니다.
 
@@ -538,7 +543,7 @@ print('Thumbnail saved in.', thumbnail_file_name)
     
 2. 변경 내용을 저장한 다음 **images** 이미지 폴더의 각 이미지 파일별로 프로그램을 한 번씩 실행합니다. 프로그램을 실행할 때마다 각 이미지에 대해 코드 파일과 같은 폴더에 생성되는 **thumbnail.jpg** 파일을 엽니다.
 
-## 자세한 정보
+## <a name="more-information"></a>추가 정보
 
 이 연습에서는 Computer Vision 서비스의 몇 가지 이미지 분석 및 조작 기능을 살펴보았습니다. 이 서비스에는 텍스트 읽기, 얼굴 감지 및 기타 Computer Vision 작업용 기능도 포함되어 있습니다.
 

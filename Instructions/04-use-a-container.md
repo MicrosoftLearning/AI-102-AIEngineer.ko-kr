@@ -2,12 +2,12 @@
 lab:
   title: Cognitive Services 컨테이너 사용
   module: Module 2 - Developing AI Apps with Cognitive Services
-ms.openlocfilehash: 3c9e51562e4fb93809855e3ae8707d6aeaf83c97
-ms.sourcegitcommit: e9fc70625e09e4f4585a08e1668597f5d82616a0
+ms.openlocfilehash: 244ab1ef3754e668d64996dece9711682651691d
+ms.sourcegitcommit: 29a684646784fe4f7370343b6c005728a953770d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/11/2022
-ms.locfileid: "141605466"
+ms.lasthandoff: 05/04/2022
+ms.locfileid: "144557843"
 ---
 # <a name="use-a-cognitive-services-container"></a>Cognitive Services 컨테이너 사용
 
@@ -52,7 +52,8 @@ Azure에서 호스트되는 Cognitive Services를 사용하는 애플리케이�
         - **리소스 그룹**: Cognitive Services 리소스가 포함된 리소스 그룹 선택
         - **컨테이너 이름**: 고유한 이름 입력
         - **지역**: 사용 가능한 지역을 선택합니다.
-        - **이미지 소스**: Docker Hub 또는 다른 레지스트리
+        - **이미지 소스**: 기타 레지스트리
+        - **이미지 형식**: 공개
         - **이미지**: `mcr.microsoft.com/azure-cognitive-services/textanalytics/language:1.1.013570001-amd64`
         - **OS 유형**: Linux
         - **Size**: vCPU 1개, 메모리 4GB
@@ -67,8 +68,8 @@ Azure에서 호스트되는 Cognitive Services를 사용하는 애플리케이�
             | 원본으로 표시 | 키 | 값 |
             | -------------- | --- | ----- |
             | 예 | `ApiKey` | Cognitive Services 리소스용 키 중 하나 |
-            | 예 | `Billing` | Cognitive Services 리소스의 엔드포인트 URI |
-            | 예 | `Eula` | `accept` |
+            | Yes | `Billing` | Cognitive Services 리소스의 엔드포인트 URI |
+            | No | `Eula` | `accept` |
 
         - **명령 재정의**: [ ]
     - **태그**:
@@ -112,6 +113,6 @@ Azure에서 호스트되는 Cognitive Services를 사용하는 애플리케이�
 1. Azure Portal에서 이 연습용으로 리소스를 만든 리소스 그룹을 엽니다.
 2. 컨테이너 인스턴스 리소스를 선택하여 삭제합니다.
 
-## <a name="more-information"></a>자세한 정보
+## <a name="more-information"></a>추가 정보
 
 Cognitive Services를 컨테이너화하는 방법에 대한 자세한 내용은 [Cognitive Services 컨테이너 설명서](https://docs.microsoft.com/azure/cognitive-services/containers/)를 참조하세요.

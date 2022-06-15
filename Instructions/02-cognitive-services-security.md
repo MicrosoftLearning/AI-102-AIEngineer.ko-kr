@@ -2,12 +2,12 @@
 lab:
   title: Cognitive Services 보안 관리
   module: Module 2 - Developing AI Apps with Cognitive Services
-ms.openlocfilehash: dcab47cf20f54d6bcbed9a3e40081b703fc2d5ba
-ms.sourcegitcommit: acbffd6019fe2f1a6ea70870cf7411025c156ef8
+ms.openlocfilehash: 9c8de44265ffa0846b6860fd7d416bb3be547ed9
+ms.sourcegitcommit: 5ffc20f6a590fe643c2b695b8dc04589411be36e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/12/2022
-ms.locfileid: "137819359"
+ms.lasthandoff: 05/31/2022
+ms.locfileid: "145951185"
 ---
 # <a name="manage-cognitive-services-security"></a>Cognitive Services 보안 관리
 
@@ -19,8 +19,8 @@ ms.locfileid: "137819359"
 
 이 랩에서 작업을 수행 중인 환경에 **AI-102-AIEngineer** 코드 리포지토리를 이미 복제했다면 Visual Studio Code에서 해당 리포지토리를 열고, 그렇지 않으면 다음 단계에 따라 리포지토리를 지금 복제합니다.
 
-1. Visual Studio Code 시작
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code를 시작합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
@@ -228,7 +228,7 @@ Cognitive Services 리소스용 키 목록이 반환됩니다. **key1** 이 마�
     python keyvault-client.py
     ```
 
-6. 메시지가 표시되면 텍스트를 입력하고 서비스가 감지하는 언어를 검토합니다. 예를 들어 "Hello", "Bonjour", "Hola" 등을 입력해 봅니다.
+6. 메시지가 표시되면 텍스트를 입력하고 서비스가 감지하는 언어를 검토합니다. 예를 들어, “Hello”, “Bonjour”, “Hola” 등을 입력해 봅니다.
 7. 애플리케이션 테스트를 완료한 후 "quit"을 입력하여 프로그램을 중지합니다.
 
 ## <a name="more-information"></a>추가 정보

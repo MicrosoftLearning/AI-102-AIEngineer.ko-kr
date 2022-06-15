@@ -2,12 +2,12 @@
 lab:
   title: 질문 답변 솔루션 만들기
   module: Module 6 - Building a QnA Solution
-ms.openlocfilehash: 3fa849480f4b6f94aea758159de126aeb8bfb513
-ms.sourcegitcommit: 47e8de0c2ea379aac8bec96b7c599ffb74d1eee9
+ms.openlocfilehash: 0a71dc2c0185c51d8ccf390afd780dd914366be0
+ms.sourcegitcommit: 45e075a4b45a914d378900b4c00451a530d813de
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/22/2022
-ms.locfileid: "139132298"
+ms.lasthandoff: 05/26/2022
+ms.locfileid: "145892515"
 ---
 # <a name="create-a-question-answering-solution"></a>질문 답변 솔루션 만들기
 
@@ -22,7 +22,7 @@ ms.locfileid: "139132298"
 이 랩에서 작업을 수행 중인 환경에 **AI-102-AIEngineer** 코드 리포지토리를 아직 복제하지 않았다면 다음 단계에 따라 리포지토리를 지금 복제합니다. 리포지토리를 복제한 경우에는 Visual Studio Code에서 복제한 폴더를 엽니다.
 
 1. Visual Studio Code를 시작합니다.
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
@@ -61,7 +61,7 @@ ms.locfileid: "139132298"
     - **언어 리소스**: 이전에 만든 언어 리소스입니다.
 3. 언어 리소스를 선택하라는 메시지가 표시되지 않으면 구독에 여러 언어 리소스가 있기 때문일 수 있습니다. 이 경우 다음을 수행합니다.<u></u>
     1. 페이지의 위쪽에 있는 막대에서 **설정(&#9881;)** 단추를 클릭합니다.
-    2. **설정** 페이지에서 **리소스** 탭을 확인합니다.
+    2. **설정** 페이지에서 **리소스** 탭을 봅니다.
     3. 방금 만든 언어 리소스를 선택하고 **리소스 전환** 을 클릭합니다.
     4. 페이지 맨 위에서 **Language Studio** 를 클릭하여 Language Studio 홈페이지로 돌아갑니다.
 3. 포털의 위쪽에 있는 **새로 만들기** 메뉴에서 **사용자 지정 질문 답변** 을 선택합니다.
@@ -85,11 +85,11 @@ ms.locfileid: "139132298"
 
 앞에서 만든 기술 자료에는 Microsoft Learn FAQ의 질문과 대답 쌍이 입력되었으며 대화형 *잡담* 질문과 대답 쌍 세트가 추가되었습니다. 질문과 대답 쌍을 더 추가하여 기술 자료를 확장할 수 있습니다.
 
-1. Language Studio의 **LearnFAQ** 프로젝트에서 **기술 자료 편집** 페이지를 선택하여 기존 질문과 답변 쌍을 확인합니다(일부 팁이 표시되는 경우 팁을 읽고 **확인** 을 클릭하여 해제하거나, **모두 건너뛰기** 를 클릭합니다).
+1. Language Studio의 **LearnFAQ** 프로젝트에서 **기술 자료 편집** 페이지를 선택하여 기존 질문 및 답변 쌍을 확인합니다(일부 팁이 표시되는 경우 팁을 읽고 **확인** 을 클릭하여 해제하거나, **모두 건너뛰기** 클릭).
 2. 기술 자료에서 **&#65291; 질문 쌍 추가** 를 선택합니다.
 3. **질문** 상자에 `What is Microsoft certification?`를 입력하고 **Enter****를 누릅니다.
-4. **&#65291; 대체 구문 추가** 를 선택하고 `How can I demonstrate my Microsoft technology skills?`를 입력하고 **Enter** 를 누릅니다.
-5. **대답** 상자에 `The Microsoft Certified Professional program enables you to validate and prove your skills with Microsoft technologies.`를 입력합니다. 그런 다음 **Enter** 를 누르고 **제출** 을 클릭하여 질문(대체 구문 포함)과 답변을 기술 자료에 추가합니다.
+4. **&#65291; 대체 구문 추가** 를 선택하고, `How can I demonstrate my Microsoft technology skills?`를 입력하고, **Enter** 키를 누릅니다.
+5. **대답** 상자에 `The Microsoft Certified Professional program enables you to validate and prove your skills with Microsoft technologies.`를 입력합니다. 그런 다음 **Enter** 키를 눌러 질문(대체 구문 포함)과 답변을 기술 자료에 추가합니다.
 
     사용자가 대답을 확인한 후 추가 작업으로 멀티 턴 대화를 작성하면 효율적인 경우도 있습니다. 그러면 사용자가 질문을 여러 번 구체화하여 필요한 대답을 확인할 수 있습니다.
 

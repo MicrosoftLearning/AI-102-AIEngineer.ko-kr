@@ -2,12 +2,12 @@
 lab:
   title: 이미지에서 텍스트 읽기
   module: Module 11 - Reading Text in Images and Documents
-ms.openlocfilehash: 0dc45d60e307769ebfde165201b97c4a3ff49675
-ms.sourcegitcommit: d6da3bcb25d1cff0edacd759e75b7608a4694f03
+ms.openlocfilehash: 1199e4e4f44a98fc5f900fa1ad021384b56f0c2b
+ms.sourcegitcommit: e242452e8125a2622093980048f1e2cacb8b893d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "137819480"
+ms.lasthandoff: 05/25/2022
+ms.locfileid: "145757493"
 ---
 # <a name="read-text-in-images"></a>이미지에서 텍스트 읽기
 
@@ -17,8 +17,8 @@ OCR(광학 인식)은 이미지와 문서에서 텍스트 읽기를 처리하는
 
 이 과정용 코드 리포지토리를 아직 복제하지 않았으면 복제해야 합니다.
 
-1. Visual Studio Code 시작
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code를 시작합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
@@ -213,7 +213,7 @@ python read-text.py
 
 ## <a name="use-the-read-api"></a>Read API 사용
 
-**Read** API는 OCR API에 비해 최신 버전의 텍스트 인식 모델을 사용하며, 텍스트가 많이 포함된 큰 이미지에서 텍스트를 인식하는 성능이 더 우수합니다. 또한 *.pdf* 파일에서 텍스트를 추출하는 작업도 지원하며, 인쇄된 텍스트(여러 언어)와 필기 텍스트(영어)를 모두 인식할 수 있습니다.
+**Read** API는 OCR API에 비해 최신 버전의 텍스트 인식 모델을 사용하며, 텍스트가 많이 포함된 큰 이미지에서 텍스트를 인식하는 성능이 더 우수합니다. 또한 *.pdf* 파일에서 텍스트를 추출하는 작업도 지원하며, 여러 언어의 인쇄된 텍스트와 필기 텍스트를 모두 인식할 수 있습니다.
 
 **Read** API는 비동기 작업 모델을 사용합니다. 이 모델에서는 텍스트 인식 시작 요청이 제출되며, 해당 요청에서 반환된 작업 ID를 이후 작업에서 사용하여 진행률을 확인하고 결과를 검색할 수 있습니다.
 

@@ -2,12 +2,12 @@
 lab:
   title: Cognitive Services 시작
   module: Module 2 - Developing AI Apps with Cognitive Services
-ms.openlocfilehash: 4baba38b03c6d7bb5fe04fa5e73bb606e970550b
-ms.sourcegitcommit: acbffd6019fe2f1a6ea70870cf7411025c156ef8
+ms.openlocfilehash: a05256a78dee051041320aa3556a43add5596ce9
+ms.sourcegitcommit: 5ffc20f6a590fe643c2b695b8dc04589411be36e
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 01/12/2022
-ms.locfileid: "137819510"
+ms.lasthandoff: 05/31/2022
+ms.locfileid: "145951193"
 ---
 # <a name="get-started-with-cognitive-services"></a>Cognitive Services 시작
 
@@ -17,8 +17,8 @@ ms.locfileid: "137819510"
 
 이 랩에서 작업을 수행 중인 환경에 **AI-102-AIEngineer** 코드 리포지토리를 아직 복제하지 않았다면 다음 단계에 따라 리포지토리를 지금 복제합니다. 리포지토리를 복제한 경우에는 Visual Studio Code에서 복제한 폴더를 엽니다.
 
-1. Visual Studio Code 시작
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code를 시작합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
@@ -54,7 +54,7 @@ Cognitive Services API는 REST를 기반으로 하므로 HTTP를 통해 JSON 요
     - **Python**: .env
 
     구성 파일을 열고 Cognitive Service 리소스용 **엔드포인트** 및 인증 **키** 를 반영하여 해당 파일에 포함된 구성 값을 업데이트합니다. 변경 내용을 저장합니다.
-4. **rest-client** 폴더에는 클라이언트 애플리케이션용 코드 파일이 포함되어 있습니다.
+3. **rest-client** 폴더에는 클라이언트 애플리케이션용 코드 파일이 포함되어 있습니다.
 
     - **C#** : Program.cs
     - **Python**: rest-client.py
@@ -66,7 +66,7 @@ Cognitive Services API는 REST를 기반으로 하므로 HTTP를 통해 JSON 요
     - API로 전송되는 요청이 입력 데이터가 들어 있는 JSON 개체로 구성되어 있습니다. 여기서 입력 데이터는 **document** 개체 컬렉션이며 각 개체에는 **id** 와 **text** 가 포함되어 있습니다.
     - 클라이언트 애플리케이션 인증을 위한 서비스용 키가 요청 헤더에 포함되어 있습니다.
     - 서비스의 응답이 클라이언트 애플리케이션에서 구문 분석할 수 있는 JSON 개체입니다.
-5. **rest-client** 폴더를 마우스 오른쪽 단추로 클릭하고 통합 터미널을 엽니다. 그런 후 다음 언어별 명령을 입력하여 프로그램을 실행합니다.
+4. **rest-client** 폴더를 마우스 오른쪽 단추로 클릭하고 통합 터미널을 엽니다. 그런 후 다음 언어별 명령을 입력하여 프로그램을 실행합니다.
 
     **C#**
 
@@ -80,8 +80,8 @@ Cognitive Services API는 REST를 기반으로 하므로 HTTP를 통해 JSON 요
     python rest-client.py
     ```
 
-6. 메시지가 표시되면 텍스트를 입력하고 서비스가 감지하는 언어를 검토합니다. 이 언어가 JSON 응답에서 반환됩니다. 예를 들어 "Hello", "Bonjour", "Hola" 등을 입력해 봅니다.
-7. 애플리케이션 테스트를 완료한 후 "quit"을 입력하여 프로그램을 중지합니다.
+5. 메시지가 표시되면 텍스트를 입력하고 서비스가 감지하는 언어를 검토합니다. 이 언어가 JSON 응답에서 반환됩니다. 예를 들어, “Hello”, “Bonjour”, “Hola” 등을 입력해 봅니다.
+6. 애플리케이션 테스트를 완료한 후 "quit"을 입력하여 프로그램을 중지합니다.
 
 ## <a name="use-an-sdk"></a>SDK 사용
 

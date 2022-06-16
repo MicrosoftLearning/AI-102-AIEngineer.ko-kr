@@ -2,12 +2,12 @@
 lab:
   title: 양식에서 데이터 추출
   module: Module 11 - Reading Text in Images and Documents
-ms.openlocfilehash: 3439c9d2d53fd0461b2fe35b095ea86d5ed3abaa
-ms.sourcegitcommit: da2617566698e889ff53426e6ddb58f42ccf9504
+ms.openlocfilehash: 540fdc49b9efcf335d43cdd7a6db405c255cd058
+ms.sourcegitcommit: de1f38bbe53ec209b42cd89516813773e2f3479b
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/05/2022
-ms.locfileid: "144776175"
+ms.lasthandoff: 05/17/2022
+ms.locfileid: "145040704"
 ---
 # <a name="extract-data-from-forms"></a>양식에서 데이터 추출 
 
@@ -196,18 +196,32 @@ pip install azure-ai-formrecognizer==3.0.0
 
 이전에 pip를 사용하여 Python 환경에 패키지를 설치했다면 이 작업을 반드시 수행할 필요는 없습니다. 하지만 이 단계를 수행하면 패키지가 설치되어 있는지를 확인할 수 있습니다.
 
-4. **test-model** 폴더에서 구성 파일(언어 기본 설정에 따라 **appsettings.json** 또는 **.env**)을 편집하여 다음 값을 추가합니다.
+4. **test-model** 폴더의 동일한 터미널에서 테이블 형식 라이브러리를 설치합니다. 그러면 출력이 테이블로 제공됩니다.
+
+**C#**
+
+```
+Install-Package Tabulate.NET -Version 1.0.5
+```
+
+**Python**
+
+```
+pip install tabulate
+```
+
+5. **test-model** 폴더에서 구성 파일(언어 기본 설정에 따라 **appsettings.json** 또는 **.env**)을 편집하여 다음 값을 추가합니다.
     - Form Recognizer 엔드포인트
     - Form Recognizer 키
     - 모델을 학습시킬 때 생성된 모델 ID(**train-model** 폴더의 **cmd** 콘솔로 터미널을 다시 전환하면 이 ID를 확인할 수 있음) 변경 내용을 **저장** 합니다.
 
-5. **test-model** 폴더에서 클라이언트 애플리케이션의 코드 파일(C#의 경우 *Program.cs*, Python의 경우 *test-model.py*)을 열고 포함되어 있는 코드를 검토하여 다음 세부 정보를 확인합니다.
+6. **test-model** 폴더에서 클라이언트 애플리케이션의 코드 파일(C#의 경우 *Program.cs*, Python의 경우 *test-model.py*)을 열고 포함되어 있는 코드를 검토하여 다음 세부 정보를 확인합니다.
     - 설치한 패키지의 네임스페이스를 가져왔습니다.
     - **Main** 함수가 구성 설정을 검색하며 키와 엔드포인트를 사용하여 인증된 **클라이언트** 를 만듭니다.
     - 클라이언트를 사용하여 **test1.jpg** 이미지의 값과 양식 필드를 추출합니다.
     
 
-6. **test-model** 폴더의 통합 터미널로 돌아와서 다음 명령을 입력하여 프로그램을 실행합니다.
+7. **test-model** 폴더의 통합 터미널로 돌아와서 다음 명령을 입력하여 프로그램을 실행합니다.
 
 **C#**
 
@@ -221,7 +235,7 @@ dotnet run
 python test-model.py
 ```
     
-7. 출력을 보고 모델의 출력이 "CompanyPhoneNumber" 및 "DatedAs"와 같은 필드 이름을 제공하는 방법에 대해 살펴봅니다.   
+8. 출력을 보고 모델의 출력이 "CompanyPhoneNumber" 및 "DatedAs"와 같은 필드 이름을 제공하는 방법에 대해 살펴봅니다.   
 
 ## <a name="more-information"></a>추가 정보
 

@@ -2,12 +2,12 @@
 lab:
   title: 질문 답변 솔루션 만들기
   module: Module 6 - Building a QnA Solution
-ms.openlocfilehash: 0a71dc2c0185c51d8ccf390afd780dd914366be0
-ms.sourcegitcommit: 45e075a4b45a914d378900b4c00451a530d813de
+ms.openlocfilehash: 42b3b6e6955188d3d442a4f587ead6afe0f389c6
+ms.sourcegitcommit: a879eae298aaf2ab6415fc4fdb67f52f592d907a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/26/2022
-ms.locfileid: "145892515"
+ms.lasthandoff: 07/02/2022
+ms.locfileid: "146902484"
 ---
 # <a name="create-a-question-answering-solution"></a>질문 답변 솔루션 만들기
 
@@ -166,4 +166,4 @@ ms.locfileid: "145892515"
 
 ## <a name="more-information"></a>추가 정보
 
-언어 서비스에서 질문 대답에 대해 자세히 알아보려면 [언어 서비스 설명서](https://docs.microsoft.com/en-us/azure/cognitive-services/language-service/question-answering/overview)를 참조하세요.
+언어 서비스에서 질문 답변에 대해 자세히 알아보려면 [언어 서비스 설명서](https://docs.microsoft.com/en-us/azure/cognitive-services/language-service/question-answering/overview)를 참조하세요.

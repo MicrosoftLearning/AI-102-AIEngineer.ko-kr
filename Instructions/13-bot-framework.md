@@ -2,12 +2,12 @@
 lab:
   title: Bot Framework SDK를 사용하여 봇 만들기
   module: Module 7 - Conversational AI and the Azure Bot Service
-ms.openlocfilehash: 7f2d78bec2ee9fab7bf5fad9ec9ef8ebc76b7fba
-ms.sourcegitcommit: d6da3bcb25d1cff0edacd759e75b7608a4694f03
+ms.openlocfilehash: ab51a1f11f4eee99838634d83b5d9261a8c20ecb
+ms.sourcegitcommit: 480c5898009ea964025fdecb57900aefeeac81fd
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "137819442"
+ms.lasthandoff: 07/07/2022
+ms.locfileid: "147019887"
 ---
 # <a name="create-a-bot-with-the-bot-framework-sdk"></a>Bot Framework SDK를 사용하여 봇 만들기
 
@@ -28,12 +28,14 @@ Bot Framework SDK를 사용하여 봇을 만들고, Bot Framework Emulator를 �
 1. **Bot Framework Emulator** 를 시작하고, 업데이트를 설치하라는 메시지가 표시되면 현재 로그인되어 있는 사용자용으로 업데이트를 설치합니다. 자동으로 메시지가 표시되지 않으면 **도움말** 메뉴의 **업데이트 확인** 옵션을 사용하여 메뉴를 확인합니다.
 2. 사용 가능한 업데이트를 설치한 후에는 나중에 다시 필요하게 될 때까지 Bot Framework Emulator를 닫습니다.
 
+> **중요**: 가끔 업데이트를 다운로드하지 못하여 조사 중입니다. 업데이트를 시도한 후 몇 분 이내에 진행이 진행되지 않는 경우 다운로드를 해제하고 현재 설치된 에뮬레이터 버전을 사용할 수 있습니다.
+
 ### <a name="clone-the-repository-for-this-course"></a>이 과정용 리포지토리 복제
 
 이 랩에서 작업을 수행 중인 환경에 **AI-102-AIEngineer** 코드 리포지토리를 아직 복제하지 않았다면 다음 단계에 따라 리포지토리를 지금 복제합니다. 리포지토리를 복제한 경우에는 Visual Studio Code에서 복제한 폴더를 엽니다.
 
-1. Visual Studio Code 시작
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code를 시작합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 

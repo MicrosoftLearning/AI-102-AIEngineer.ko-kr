@@ -2,12 +2,12 @@
 lab:
   title: Computer Vision을 사용하여 이미지 분석
   module: Module 8 - Getting Started with Computer Vision
-ms.openlocfilehash: 5b7f15550844e4bc5efbdb3b8ee00d71760f18c9
-ms.sourcegitcommit: d6da3bcb25d1cff0edacd759e75b7608a4694f03
+ms.openlocfilehash: f2ee18ff682d53e9fd554749ed2b9cbaa9b03611
+ms.sourcegitcommit: 7191e53bc33cda92e710d957dde4478ee2496660
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "137819476"
+ms.lasthandoff: 07/09/2022
+ms.locfileid: "147041669"
 ---
 # <a name="analyze-images-with-computer-vision"></a>Computer Vision을 사용하여 이미지 분석
 
@@ -17,8 +17,8 @@ Computer Vision은 소프트웨어 시스템이 이미지를 분석하여 시각
 
 이 랩에서 작업을 수행 중인 환경에 **AI-102-AIEngineer** 코드 리포지토리를 아직 복제하지 않았다면 다음 단계에 따라 리포지토리를 지금 복제합니다. 리포지토리를 복제한 경우에는 Visual Studio Code에서 복제한 폴더를 엽니다.
 
-1. Visual Studio Code 시작
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code를 시작합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
@@ -265,16 +265,15 @@ if (len(analysis.tags) > 0):
 
 ## <a name="get-image-categories"></a>이미지 범주 가져오기
 
-Computer Vision 서비스는 이미지 *범주* 를 추천할 수 있으며 각 범주 내에서 잘 알려진 주요 건물이나 유명인을 식별할 수 있습니다.
+Computer Vision 서비스는 이미지 범주를 추천할 수 있으며 각 범주 내에서 잘 알려진 주요 건물을 식별할 수 있습니다.
 
-1. **AnalyzeImage** 함수의 **이미지 범주 가져오기(유명인 및 주요 건물 포함)** 주석 아래에 다음 코드를 추가합니다.
+1. **AnalyzeImage** 함수의 **이미지 범주 가져오기** 주석 아래에 다음 코드를 추가합니다.
 
 **C#**
 
 ```C
-// Get image categories (including celebrities and landmarks)
+// Get image categories
 List<LandmarksModel> landmarks = new List<LandmarksModel> {};
-List<CelebritiesModel> celebrities = new List<CelebritiesModel> {};
 Console.WriteLine("Categories:");
 foreach (var category in analysis.Categories)
 {
@@ -292,18 +291,6 @@ foreach (var category in analysis.Categories)
             }
         }
     }
-
-    // Get celebrities in this category
-    if (category.Detail?.Celebrities != null)
-    {
-        foreach (CelebritiesModel celebrity in category.Detail.Celebrities)
-        {
-            if (!celebrities.Any(item => item.Name == celebrity.Name))
-            {
-                celebrities.Add(celebrity);
-            }
-        }
-    }
 }
 
 // If there were landmarks, list them
@@ -316,25 +303,15 @@ if (landmarks.Count > 0)
     }
 }
 
-// If there were celebrities, list them
-if (celebrities.Count > 0)
-{
-    Console.WriteLine("Celebrities:");
-    foreach(CelebritiesModel celebrity in celebrities)
-    {
-        Console.WriteLine($" -{celebrity.Name} (confidence: {celebrity.Confidence.ToString("P")})");
-    }
-}
 ```
 
 **Python**
 
 ```Python
-# Get image categories (including celebrities and landmarks)
+# Get image categories
 if (len(analysis.categories) > 0):
     print("Categories:")
     landmarks = []
-    celebrities = []
     for category in analysis.categories:
         # Print the category
         print(" -'{}' (confidence: {:.2f}%)".format(category.name, category.score * 100))
@@ -345,27 +322,15 @@ if (len(analysis.categories) > 0):
                     if landmark not in landmarks:
                         landmarks.append(landmark)
 
-            # Get celebrities in this category
-            if category.detail.celebrities:
-                for celebrity in category.detail.celebrities:
-                    if celebrity not in celebrities:
-                        celebrities.append(celebrity)
-
     # If there were landmarks, list them
     if len(landmarks) > 0:
         print("Landmarks:")
         for landmark in landmarks:
             print(" -'{}' (confidence: {:.2f}%)".format(landmark.name, landmark.confidence * 100))
 
-    # If there were celebrities, list them
-    if len(celebrities) > 0:
-        print("Celebrities:")
-        for celebrity in celebrities:
-            print(" -'{}' (confidence: {:.2f}%)".format(celebrity.name, celebrity.confidence * 100))
-
 ```
     
-2. 변경 내용을 저장한 다음 **images** 이미지 폴더의 각 이미지 파일별로 프로그램을 한 번씩 실행합니다. 프로그램을 실행할 때마다 이미지 캡션과 태그 외에 추천 범주 목록, 그리고 인식된 주요 건물이나 유명인도 표시됨을 확인합니다(특히 **building.jpg** 및 **person.jpg** 이미지의 경우).
+2. 변경 내용을 저장한 다음 **images** 폴더의 각 이미지 파일별로 프로그램을 한 번씩 실행합니다. 프로그램을 실행할 때마다 이미지 캡션과 태그 외에 추천 범주 목록, 그리고 인식된 주요 건물도 표시됨을 확인합니다(특히 **building.jpg** 이미지의 경우).
 
 ## <a name="get-brands-in-an-image"></a>이미지에서 브랜드 가져오기
 

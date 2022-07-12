@@ -2,23 +2,25 @@
 lab:
   title: Video Analyzer를 사용하여 비디오 분석
   module: Module 8 - Getting Started with Computer Vision
-ms.openlocfilehash: cd67c472b5ee15efce232483afc8aeeac552b50c
-ms.sourcegitcommit: d6da3bcb25d1cff0edacd759e75b7608a4694f03
+ms.openlocfilehash: ec23e53f363ed7c7df8fd598cfd1fc8807712f05
+ms.sourcegitcommit: 7191e53bc33cda92e710d957dde4478ee2496660
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "137819382"
+ms.lasthandoff: 07/09/2022
+ms.locfileid: "147041678"
 ---
 # <a name="analyze-video-with-video-analyzer"></a>Video Analyzer를 사용하여 비디오 분석
 
 오늘날 생성 및 사용되고 있는 데이터 중 대부분은 비디오 형식입니다. AI 지원 서비스인 **Video Analyzer for Media** 를 사용하면 비디오를 인덱싱하고 비디오에서 인사이트를 추출할 수 있습니다.
 
+> **참고**: 2022년 6월 21일부터 개인 식별 정보를 반환하는 Cognitive Service의 기능은 [제한된 액세스 권한](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-limited-access)이 부여된 고객으로 제한됩니다. 또한 감정 상태를 유추하는 기능은 더 이상 사용할 수 없습니다. 이러한 제한 사항은 이 랩 연습에 영향을 줄 수 있습니다. 이 문제를 해결하기 위해 노력하고 있지만, 그 동안에는 아래 단계를 수행하면 몇 가지 오류가 발생할 수 있습니다. 이에 대해 사과드립니다. Microsoft가 변경한 내용 및 그 이유에 대한 자세한 내용은 [얼굴 인식에 대한 책임 있는 AI 투자 및 보호 조치](https://azure.microsoft.com/blog/responsible-ai-investments-and-safeguards-for-facial-recognition/)를 참조하세요.
+
 ## <a name="clone-the-repository-for-this-course"></a>이 과정용 리포지토리 복제
 
 이 랩에서 작업을 수행 중인 환경에 **AI-102-AIEngineer** 코드 리포지토리를 이미 복제했다면 Visual Studio Code에서 해당 리포지토리를 열고, 그렇지 않으면 다음 단계에 따라 리포지토리를 지금 복제합니다.
 
-1. Visual Studio Code 시작
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code를 시작합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 

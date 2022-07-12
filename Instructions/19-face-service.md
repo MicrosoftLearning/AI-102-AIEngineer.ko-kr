@@ -2,23 +2,25 @@
 lab:
   title: 얼굴 감지, 분석 및 인식
   module: Module 10 - Detecting, Analyzing, and Recognizing Faces
-ms.openlocfilehash: b9565f41eb67b916278508c729860a3471a9e0bd
-ms.sourcegitcommit: d6da3bcb25d1cff0edacd759e75b7608a4694f03
+ms.openlocfilehash: 29b0544e4f31f6e85eeba5cd8fb42951ca1334a9
+ms.sourcegitcommit: 7191e53bc33cda92e710d957dde4478ee2496660
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 11/16/2021
-ms.locfileid: "137819355"
+ms.lasthandoff: 07/09/2022
+ms.locfileid: "147041660"
 ---
 # <a name="detect-analyze-and-recognize-faces"></a>얼굴 감지, 분석 및 인식
 
 사람의 얼굴을 감지, 분석 및 인식하는 기능은 AI의 핵심 기능입니다. 이 연습에서는 이미지에 포함된 얼굴로 작업을 하는 데 사용할 수 있는 두 가지 Azure Cognitive Services인 **Computer Vision** 서비스와 **Face** 서비스에 대해 살펴봅니다.
 
+> **참고**: 2022년 6월 21일부터 개인 식별 정보를 반환하는 Cognitive Service의 기능은 [제한된 액세스 권한](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-limited-access)이 부여된 고객으로 제한됩니다. 또한 감정 상태를 유추하는 기능은 더 이상 사용할 수 없습니다. 이러한 제한 사항은 이 랩 연습에 영향을 줄 수 있습니다. 이 문제를 해결하기 위해 노력하고 있지만, 그 동안에는 아래 단계를 수행하면 몇 가지 오류가 발생할 수 있습니다. 이에 대해 사과드립니다. Microsoft가 변경한 내용 및 그 이유에 대한 자세한 내용은 [얼굴 인식에 대한 책임 있는 AI 투자 및 보호 조치](https://azure.microsoft.com/blog/responsible-ai-investments-and-safeguards-for-facial-recognition/)를 참조하세요.
+
 ## <a name="clone-the-repository-for-this-course"></a>이 과정용 리포지토리 복제
 
 이 과정용 코드 리포지토리를 아직 복제하지 않았으면 복제해야 합니다.
 
-1. Visual Studio Code 시작
-2. 팔레트를 열고(Shift+Ctrl+P 누르기) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
+1. Visual Studio Code를 시작합니다.
+2. 팔레트를 열고(Shift+Ctrl+P) **Git: Clone** 명령을 실행하여 `https://github.com/MicrosoftLearning/AI-102-AIEngineer` 리포지토리를 로컬 폴더(아무 폴더나 관계없음)에 복제합니다.
 3. 리포지토리가 복제되면 Visual Studio Code에서 폴더를 엽니다.
 4. 리포지토리의 C# 코드 프로젝트를 지원하는 추가 파일이 설치되는 동안 기다립니다.
 
@@ -171,7 +173,7 @@ using (var imageData = File.OpenRead(imageFile))
             var r = face.FaceRectangle;
             Rectangle rect = new Rectangle(r.Left, r.Top, r.Width, r.Height);
             graphics.DrawRectangle(pen, rect);
-            string annotation = $"Person aged approximately {face.Age}";
+            string annotation = $"Person at approximately {face.Left}, {face.Top}";
             graphics.DrawString(annotation,font,brush,r.Left, r.Top);
         }
 
@@ -207,7 +209,7 @@ with open(image_file, mode="rb") as image_data:
             bounding_box = ((r.left, r.top), (r.left + r.width, r.top + r.height))
             draw = ImageDraw.Draw(image)
             draw.rectangle(bounding_box, outline=color, width=5)
-            annotation = 'Person aged approximately {}'.format(face.age)
+            annotation = 'Person at approximately {}, {}'.format(r.left, r.top)
             plt.annotate(annotation,(r.left, r.top), backgroundcolor=color)
 
         # Save annotated image
@@ -233,7 +235,7 @@ with open(image_file, mode="rb") as image_data:
     ```
 
 6. 출력을 살펴봅니다. 감지된 얼굴 수가 표시됩니다.
-7. 코드 파일과 같은 폴더에 생성된 **detected_faces.jpg** 파일을 표시하여 주석이 추가된 얼굴을 확인합니다. 여기서 코드는 얼굴 특성을 사용해 이미지에 나와 있는 각 사람의 연령을 추정했습니다. 그리고 경계 상자 좌표를 사용해 각 얼굴 주위에 사각형을 그렸습니다.
+7. 코드 파일과 같은 폴더에 생성된 **detected_faces.jpg** 파일을 표시하여 주석이 추가된 얼굴을 확인합니다. 여기서 코드는 얼굴 특성을 사용해 상자의 왼쪽 상단 위치에 레이블을 지정하고 경계 상자 좌표를 사용해 각 얼굴 주위에 사각형을 그렸습니다.
 
 ## <a name="prepare-to-use-the-face-sdk"></a>Face SDK 사용 준비
 
@@ -309,7 +311,7 @@ with open(image_file, mode="rb") as image_data:
 
 ## <a name="detect-and-analyze-faces"></a>얼굴 감지 및 분석
 
-Face 서비스의 가장 기본적인 기능 중 하나는 이미지의 얼굴을 감지하고 해당 특성을 확인하는 것입니다. 이러한 특성으로는 연령, 감정 표현, 머리 색, 안경 유무 등이 있습니다.
+Face 서비스의 가장 기본적인 기능 중 하나는 이미지에서 얼굴을 감지하고 해당 특성을 확인하는 것입니다. 이러한 특성으로는 머리 자세, 흐릿한 형체, 안경 유무 등이 있습니다.
 
 1. 애플리케이션용 코드 파일의 **Main** 함수에서 사용자가 메뉴 옵션 **1** 을 선택하면 실행되는 코드를 살펴봅니다. 이 코드는 **DetectFaces** 함수를 호출하여 이미지 파일의 경로를 전달합니다.
 2. 코드 파일에서 **DetectFaces** 함수를 찾은 다음 **검색할 얼굴 기능 지정** 주석 아래에 다음 코드를 추가합니다.
@@ -320,8 +322,8 @@ Face 서비스의 가장 기본적인 기능 중 하나는 이미지의 얼굴�
     // Specify facial features to be retrieved
     List<FaceAttributeType?> features = new List<FaceAttributeType?>
     {
-        FaceAttributeType.Age,
-        FaceAttributeType.Emotion,
+        FaceAttributeType.Occlusion,
+        FaceAttributeType.Blur,
         FaceAttributeType.Glasses
     };
     ```
@@ -330,8 +332,8 @@ Face 서비스의 가장 기본적인 기능 중 하나는 이미지의 얼굴�
 
     ```Python
     # Specify facial features to be retrieved
-    features = [FaceAttributeType.age,
-                FaceAttributeType.emotion,
+    features = [FaceAttributeType.occlusion,
+                FaceAttributeType.blur,
                 FaceAttributeType.glasses]
     ```
 
@@ -361,15 +363,11 @@ using (var imageData = File.OpenRead(imageFile))
         {
             // Get face properties
             Console.WriteLine($"\nFace ID: {face.FaceId}");
-            Console.WriteLine($" - Age: {face.FaceAttributes.Age}");
-            Console.WriteLine($" - Emotions:");
-            foreach (var emotion in face.FaceAttributes.Emotion.ToRankedList())
-            {
-                Console.WriteLine($"   - {emotion}");
-            }
-
+            Console.WriteLine($" - Mouth Occluded: {face.FaceAttributes.Occlusion.MouthOccluded}");
+            Console.WriteLine($" - Eye Occluded: {face.FaceAttributes.Occlusion.EyeOccluded}");
+            Console.WriteLine($" - Blur: {face.FaceAttributes.Blur.BlurLevel}");
             Console.WriteLine($" - Glasses: {face.FaceAttributes.Glasses}");
-
+            
             // Draw and annotate face
             var r = face.FaceRectangle;
             Rectangle rect = new Rectangle(r.Left, r.Top, r.Width, r.Height);
@@ -410,14 +408,16 @@ with open(image_file, mode="rb") as image_data:
             # Get face properties
             print('\nFace ID: {}'.format(face.face_id))
             detected_attributes = face.face_attributes.as_dict()
-            age = 'age unknown' if 'age' not in detected_attributes.keys() else int(detected_attributes['age'])
-            print(' - Age: {}'.format(age))
+            if 'blur' in detected_attributes:
+                print(' - Blur:')
+                for blur_name in detected_attributes['blur']:
+                    print('   - {}: {}'.format(blur_name, detected_attributes['blur'][blur_name]))
+                    
+            if 'occlusion' in detected_attributes:
+                print(' - Occlusion:')
+                for occlusion_name in detected_attributes['occlusion']:
+                    print('   - {}: {}'.format(occlusion_name, detected_attributes['occlusion'][occlusion_name]))
 
-            if 'emotion' in detected_attributes:
-                print(' - Emotions:')
-                for emotion_name in detected_attributes['emotion']:
-                    print('   - {}: {}'.format(emotion_name, detected_attributes['emotion'][emotion_name]))
-            
             if 'glasses' in detected_attributes:
                 print(' - Glasses:{}'.format(detected_attributes['glasses']))
 

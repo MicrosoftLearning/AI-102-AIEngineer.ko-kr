@@ -2,18 +2,18 @@
 lab:
   title: Video Analyzer를 사용하여 비디오 분석
   module: Module 8 - Getting Started with Computer Vision
-ms.openlocfilehash: ec23e53f363ed7c7df8fd598cfd1fc8807712f05
-ms.sourcegitcommit: 7191e53bc33cda92e710d957dde4478ee2496660
+ms.openlocfilehash: 50223cdfeb0a22933858d595d9329f8b8dcd873d
+ms.sourcegitcommit: e20d9099aaecdefa62a763dae24833b97e3d9f6d
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/09/2022
-ms.locfileid: "147041678"
+ms.lasthandoff: 07/11/2022
+ms.locfileid: "147052857"
 ---
 # <a name="analyze-video-with-video-analyzer"></a>Video Analyzer를 사용하여 비디오 분석
 
 오늘날 생성 및 사용되고 있는 데이터 중 대부분은 비디오 형식입니다. AI 지원 서비스인 **Video Analyzer for Media** 를 사용하면 비디오를 인덱싱하고 비디오에서 인사이트를 추출할 수 있습니다.
 
-> **참고**: 2022년 6월 21일부터 개인 식별 정보를 반환하는 Cognitive Service의 기능은 [제한된 액세스 권한](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-limited-access)이 부여된 고객으로 제한됩니다. 또한 감정 상태를 유추하는 기능은 더 이상 사용할 수 없습니다. 이러한 제한 사항은 이 랩 연습에 영향을 줄 수 있습니다. 이 문제를 해결하기 위해 노력하고 있지만, 그 동안에는 아래 단계를 수행하면 몇 가지 오류가 발생할 수 있습니다. 이에 대해 사과드립니다. Microsoft가 변경한 내용 및 그 이유에 대한 자세한 내용은 [얼굴 인식에 대한 책임 있는 AI 투자 및 보호 조치](https://azure.microsoft.com/blog/responsible-ai-investments-and-safeguards-for-facial-recognition/)를 참조하세요.
+> **참고**: 2022년 6월 21일부터 개인 식별 정보를 반환하는 Cognitive Service의 기능은 [제한된 액세스 권한](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-limited-access)이 부여된 고객으로 제한됩니다. 제한된 액세스 승인을 받지 않으면 이 랩에서 Video Analyzer로 사용자 및 유명인사를 인식하는 기능을 사용할 수 없습니다. Microsoft가 변경한 내용 및 그 이유에 대한 자세한 내용은 [얼굴 인식에 대한 책임 있는 AI 투자 및 보호 조치](https://azure.microsoft.com/blog/responsible-ai-investments-and-safeguards-for-facial-recognition/)를 참조하세요.
 
 ## <a name="clone-the-repository-for-this-course"></a>이 과정용 리포지토리 복제
 
@@ -80,34 +80,6 @@ Video Analyzer를 사용하여 비디오에서 인사이트를 검색할 수 있
 
 ![Video Analyzer에 표시된 Bee의 검색 결과](./images/video-indexer-search.png)
 
-## <a name="edit-insights"></a>인사이트 편집
-
-Video Analyzer를 사용하면 확인된 인사이트를 편집하여 비디오에 더욱 적합한 사용자 지정 정보를 추가할 수 있습니다.
-
-1. 비디오를 시작 부분으로 되감고 **인사이트** 창 위쪽에 나열된 **사람** 을 확인합니다. 컴퓨터 과학자이자 Microsoft 소속 기술 전문가인 **Eric Horwitz** 를 비롯한 사람 몇 명이 인식되었음을 확인합니다.
-
-![Video Analyzer에 표시된 알려진 사람의 인사이트](./images/video-indexer-known-person.png)
-
-2. Eric Horwitz의 사진을 선택하고 아래에 표시되는 정보를 확인합니다. **소개 표시** 섹션을 확장하면 이 사람에 대한 정보를 확인할 수 있습니다.
-3. 비디오에서 이 사람이 나오는 위치도 표시됩니다. 이러한 위치를 참조하여 비디오의 해당 섹션을 시청할 수 있습니다.
-4. 비디오 플레이어에서 0:34초 정도에 말을 하는 사람을 찾습니다.
-
-![Video Analyzer에 표시된 모르는 사람의 인사이트](./images/video-indexer-unknown-person.png)
-
-5. 이 사람은 인식되지 않았으며 **알 수 없음 1번** 등의 일반 이름이 할당되었습니다. 그러나 이 사람의 이름이 포함된 캡션이 비디오에 표시되므로 이 사람의 세부 정보를 편집하여 인사이트를 보강할 수 있습니다.
-6. 포털 오른쪽 위에서 **편집** 아이콘(&#x1F589;)을 선택합니다. 그런 다음 알 수 없는 사람의 이름을 **Natasha Crampton** 으로 변경합니다.
-
-![Video Analyzer에서 사람 편집](./images/video-indexer-edit-name.png)
-
-7. 이름을 변경한 후 **인사이트** 창에서 *Natasha* 를 검색합니다. 사람 1명, 그리고 이 사람이 나오는 비디오 섹션이 포함된 결과가 반환됩니다.
-8. 포털 왼쪽 위에서 메뉴(&#8801;)를 확장하고 **모델 사용자 지정** 페이지를 선택합니다. 그런 다음 **사람** 탭에서 **기본** 사람 모델에 사람이 1명 포함되어 있음을 확인합니다. 앞에서 이름을 지정한 사람이 사람 모델에 추가된 것입니다. 그러므로 계정에서 추가로 인덱싱하는 비디오에서는 이 사람이 인식됩니다.
-
-![Video Analyzer의 기본 사람 모델](./images/video-indexer-custom-model.png)
-
-기본 사람 모델에 사람 이미지를 추가하거나 고유한 새 모델을 추가할 수 있습니다. 이렇게 하면 얼굴 이미지로 사람 컬렉션을 정의할 수 있으므로 Video Analyzer가 비디오에서 이러한 사람을 인식할 수 있습니다.
-
-그리고 언어(예: Video Analyzer에서 인식하도록 할 업계별 용어 지정) 및 브랜드(예: 회사 또는 제품 이름)용 사용자 지정 모델을 만들 수도 있습니다.
-
 ## <a name="use-video-analyzer-widgets"></a>Video Analyzer 위젯 사용
 
 Video Analyzer 포털은 비디오 인덱싱 프로젝트를 관리할 수 있는 유용한 인터페이스입니다. 그러나 Video Analyzer 계정 액세스 권한이 없는 사용자에게 비디오와 인사이트를 제공해야 하는 경우도 많습니다. Video Analyzer에서는 이러한 용도로 웹 페이지에 포함할 수 있는 위젯을 제공합니다.
@@ -155,5 +127,7 @@ Video Analyzer REST API와의 모든 상호 작용에서는 동일한 패턴이 
 6. REST 서비스의 JSON 응답을 확인합니다. 앞에서 인덱싱한 **책임있는 AI** 비디오의 세부 정보가 응답에 포함되어 있습니다.
 
 ## <a name="more-information"></a>추가 정보
+
+사람과 유명인사에 대한 인식 기능은 사용할 수 있지만 [요구되는 AI 표준](https://aka.ms/aah91ff)을 준수하는 것은 제한된 액세스 정책 하에 제한됩니다. 이러한 기능에 얼굴 식별 및 유명 인사 인식이 포함됩니다. 자세한 내용을 알아보고 액세스를 신청하려면 [Cognitive Services에 대한 제한된 액세스](https://docs.microsoft.com/en-us/azure/cognitive-services/cognitive-services-limited-access)를 참조하세요.
 
 **Video Analyzer** 에 대한 자세한 내용은 [Video Analyzer 설명서](https://docs.microsoft.com/azure/azure-video-analyzer/video-analyzer-for-media-docs/)를 참조하세요.

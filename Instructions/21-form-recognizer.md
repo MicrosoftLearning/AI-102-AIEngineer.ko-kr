@@ -2,12 +2,12 @@
 lab:
   title: 양식에서 데이터 추출
   module: Module 11 - Reading Text in Images and Documents
-ms.openlocfilehash: 540fdc49b9efcf335d43cdd7a6db405c255cd058
-ms.sourcegitcommit: de1f38bbe53ec209b42cd89516813773e2f3479b
+ms.openlocfilehash: 96d47db5b1db0b4d87b5c7acd267493487584c41
+ms.sourcegitcommit: 94c8705b76b644d0fb0cd6df1b78ff63d5869109
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/17/2022
-ms.locfileid: "145040704"
+ms.lasthandoff: 07/26/2022
+ms.locfileid: "147406489"
 ---
 # <a name="extract-data-from-forms"></a>양식에서 데이터 추출 
 
@@ -201,7 +201,7 @@ pip install azure-ai-formrecognizer==3.0.0
 **C#**
 
 ```
-Install-Package Tabulate.NET -Version 1.0.5
+dotnet add package Tabulate.NET --version 1.0.5
 ```
 
 **Python**
